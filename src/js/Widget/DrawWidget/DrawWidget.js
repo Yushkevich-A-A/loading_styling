@@ -1,22 +1,22 @@
-import moment from "moment";
+import moment from 'moment';
 import 'moment/locale/ru';
 
 moment().local('ru');
 
 export default class DrawWidget {
-    constructor(element) {
-        this.element = element;
-        this.init();
-    }
+  constructor(element) {
+    this.element = element;
+    this.init();
+  }
 
-    init() {
-        this.drawWidget();
-    }
+  init() {
+    this.drawWidget();
+  }
 
-    drawWidget() {
-        this.widget = document.createElement('div');
-        this.widget.classList.add('widget-wrapper');
-        this.widget.innerHTML = `<div class="widget">
+  drawWidget() {
+    this.widget = document.createElement('div');
+    this.widget.classList.add('widget-wrapper');
+    this.widget.innerHTML = `<div class="widget">
         <div class="widget-title">
           <h1 class="widget-title_h1">Новости мира кино</h1>
           <div class="widget-title-reload">
@@ -69,51 +69,51 @@ export default class DrawWidget {
           </div>
         </div>
       </div>`;
-      this.element.appendChild(this.widget)
+    this.element.appendChild(this.widget);
 
-      this.reload = this.widget.querySelector('.widget-title-reload');
-      this.wrapperContent = this.widget.querySelector('.wrapper-content');
-      this.content = this.widget.querySelector('.content');
-      this.contentList = this.widget.querySelector('.content-list');
-      this.widgetErrorWrapper = this.widget.querySelector('.widget-error-wrapper');
+    this.reload = this.widget.querySelector('.widget-title-reload');
+    this.wrapperContent = this.widget.querySelector('.wrapper-content');
+    this.content = this.widget.querySelector('.content');
+    this.contentList = this.widget.querySelector('.content-list');
+    this.widgetErrorWrapper = this.widget.querySelector('.widget-error-wrapper');
+  }
+
+  // closeWrapper() {
+  //     this.wrapperContent.classList.add('disable');
+  // }
+
+  // openWrapper() {
+  //     this.wrapperContent.classList.remove('disable');
+  // }
+
+  openContent() {
+    this.content.classList.remove('disable');
+    this.wrapperContent.classList.add('disable');
+  }
+
+  closeContent() {
+    this.content.classList.add('disable');
+    this.wrapperContent.classList.remove('disable');
+  }
+
+  openErrorConnect() {
+    this.widgetErrorWrapper.classList.remove('disable');
+  }
+
+  closeErrorConnect() {
+    this.widgetErrorWrapper.classList.add('disable');
+  }
+
+  drawContent(data) {
+    for (const i of data) {
+      this.drawItem(i);
     }
+  }
 
-    // closeWrapper() {
-    //     this.wrapperContent.classList.add('disable');
-    // }
-
-    // openWrapper() {
-    //     this.wrapperContent.classList.remove('disable');
-    // }
-
-    openContent() {
-        this.content.classList.remove('disable');
-        this.wrapperContent.classList.add('disable');
-    }
-
-    closeContent() {
-        this.content.classList.add('disable');
-        this.wrapperContent.classList.remove('disable');
-    }
-
-    openErrorConnect() {
-        this.widgetErrorWrapper.classList.remove('disable');
-    }
-
-    closeErrorConnect() {
-        this.widgetErrorWrapper.classList.add('disable');
-    }
-
-    drawContent(data) {
-        for(let i of data) {
-           this.drawItem(i); 
-        }
-    }
-
-    drawItem(item) {
-        const li = document.createElement('li');
-        li.classList.add('wrapper-content-item');
-        li.innerHTML = `<div class="item-date">${moment(item.date).format('HH:mm DD:MM:YYYY')}</div>
+  drawItem(item) {
+    const li = document.createElement('li');
+    li.classList.add('wrapper-content-item');
+    li.innerHTML = `<div class="item-date">${moment(item.date).format('HH:mm DD:MM:YYYY')}</div>
         <div class="item-info">
           <div class="item-info-img">
             <img class="item-img" src="./image/a88ca4cdc69aa0d9bc8064f7d36871a4.jpg" alt="">
@@ -123,11 +123,11 @@ export default class DrawWidget {
           </div>
         </div>`;
 
-        this.contentList.appendChild(li);
+    this.contentList.appendChild(li);
 
-        const img = li.querySelector('.item-img');
-        img.src = item.src;
-        const decript = li.querySelector('.description-text');
-        decript.textContent = item.description;
-    }
+    const img = li.querySelector('.item-img');
+    img.src = item.src;
+    const decript = li.querySelector('.description-text');
+    decript.textContent = item.description;
+  }
 }
