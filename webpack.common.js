@@ -11,10 +11,11 @@ module.exports = {
   module: {
     rules: [
       {
-        test: /\.worker.js$/,
+        test: /\.js$/,
+        exclude: /node_modules/,
         use: {
-          loader:'worker-loader'
-        }
+          loader: 'babel-loader',
+        },
       },
       {
         test: /\.js$/,
@@ -53,7 +54,7 @@ module.exports = {
         ],
       },
       {
-        test: /service.worker\.js$/,
+        test: /service.worker.js\.js$/,
         use: [
           { loader:'file-loader',
           options: {
