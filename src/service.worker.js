@@ -1,4 +1,4 @@
-const version = 'v1';
+const version = 'v2';
 
 const cacheName = `app = ${version}`;
 
@@ -52,6 +52,8 @@ self.addEventListener('fetch', event => {
          if (cachedResponse) {
              return cachedResponse;
          }
+
+         return fetch(event.request);
         })()
     )
 })

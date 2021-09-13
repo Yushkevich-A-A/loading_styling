@@ -97,6 +97,10 @@ export default class DrawWidget {
     }
 
     openErrorConnect() {
+        this.widgetErrorWrapper.classList.remove('disable');
+    }
+
+    closeErrorConnect() {
         this.widgetErrorWrapper.classList.add('disable');
     }
 
