@@ -8,7 +8,8 @@ module.exports = {
         "browser": true,
         "es2021": true,
         "jest": true,
-        "worker":true
+        "worker": true,
+        "serviceworker": true
     },
     "extends": [
         "airbnb-base"

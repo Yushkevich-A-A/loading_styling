@@ -53,6 +53,16 @@ module.exports = {
         ],
       },
       {
+        test: /service.worker\.js$/,
+        use: [
+          { loader:'file-loader',
+          options: {
+            name: '[name].[ext]',
+            },
+          }
+        ]
+      },
+      {
         test: /\.html$/,
         use: [
           {
