@@ -3,11 +3,11 @@ const version = 'v2';
 const cacheName = `app = ${version}`;
 
 const files = [
-  '/',
-  '/index.html',
-  '/index.bundle.js',
-  '/main.css',
-  '/patternbg.png',
+  './',
+  './index.html',
+  './index.bundle.js',
+  './main.css',
+  './patternbg.png',
 ];
 
 async function putFilesToCache(data) {
