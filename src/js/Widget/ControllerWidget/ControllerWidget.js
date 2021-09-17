@@ -52,10 +52,9 @@ export default class ControllerWidget {
         const data = await response.json();
         console.log(data);
         this.widget.drawContent(data);
-
       }
     } catch (e) {
-      console.log(e)
+      console.log(e);
       this.widget.openErrorConnect();
     }
     this.requestPending = false;
