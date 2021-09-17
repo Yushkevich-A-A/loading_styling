@@ -48,8 +48,14 @@ export default class ControllerWidget {
       const response = await fetch(`${this.url}getdata`);
       if (response.status < 200 || response.status >= 300) {
         this.widget.openErrorConnect();
+      } else {
+        const data = await response.json();
+        console.log(data);
+        this.widget.drawContent(data);
+
       }
     } catch (e) {
+      console.log(e)
       this.widget.openErrorConnect();
     }
     this.requestPending = false;
